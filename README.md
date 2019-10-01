@@ -1,1 +1,1 @@
-![UML Diagram](https://github.com/3296f19temple/paystationmain-02-miller-kieser-irish-pride/blob/add-UML/UML.png)
+![UML Diagram](https://github.com/3296f19temple/paystationmain-02-miller-kieser-irish-pride/blob/add-feature/classUML.png)
