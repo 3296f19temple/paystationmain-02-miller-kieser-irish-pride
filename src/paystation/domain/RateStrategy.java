@@ -18,7 +18,7 @@ public interface RateStrategy {
 }
 
 class alphaTown implements RateStrategy{
-   int time;
+   private int time;
     
     @Override
     public int calculateTime(int money){
@@ -29,7 +29,7 @@ class alphaTown implements RateStrategy{
 }
 
 class betaTown implements RateStrategy{
-   int time;
+   private int time;
     
     @Override
     public int calculateTime(int money){
@@ -48,7 +48,7 @@ class betaTown implements RateStrategy{
 }
 
 class gammaTown implements RateStrategy{
-    int time;
+    private int time;
     
     @Override
     public int calculateTime (int money){

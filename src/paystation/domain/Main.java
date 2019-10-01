@@ -14,13 +14,14 @@ public class Main {
         String addMoreCoins;
         int city = 1;
 
-        PayStationImpl payStation = new PayStationImpl();
+        PayStation payStation = new PayStationImpl();
         Scanner obj = new Scanner(System.in);
         Scanner objStrings = new Scanner(System.in);
 
 
         do {
             System.out.println("Enter a number: ");
+            System.out.println("    0 - Quit ");
             System.out.println("    1 - Deposit Coins ");
             System.out.println("    2 - Display Time So Far ");
             System.out.println("    3 - Buy Ticket ");
@@ -99,6 +100,7 @@ public class Main {
                     loop = false;
                     break;
                 default:
+                    //loop = false;
                     break;
 
             }
