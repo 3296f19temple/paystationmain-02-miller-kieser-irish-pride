@@ -18,6 +18,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class PayStationImplTest {
 
@@ -299,5 +301,82 @@ public class PayStationImplTest {
         assertEquals(emptyMap, result);
     }
     
+    //Ensures that linear rate is used while in alphaTown
+    @Test
+    public void testalphaTown() throws Exception
+    {
+        PayStationImpl instance = new PayStationImpl();
+        int testAlpha = 0;
+        int compareAlpha = 0;
+        testAlpha = instance.calculateTime(100, 1);
+        compareAlpha = (100 * 2) / 5;
+        assertEquals(testAlpha, compareAlpha);
+
+        
+    }
+    
+    //Ensures that progressive rate is used while in betaTown
+    @Test
+    public void testbetaTown() throws Exception
+    {
+        PayStationImpl instance = new PayStationImpl();
+        int testBeta = 0;
+        int compareBeta = 0;
+        
+        //Test for less than or equal 150
+        testBeta = instance.calculateTime(140, 2);
+        compareBeta = (140 * 2) / 5;
+        assertEquals(compareBeta, testBeta);
+                
+        //Test for in between 150 and 350
+        testBeta = instance.calculateTime(300, 2);
+        compareBeta = (300 - 150)*(3/10) + 60;
+        assertEquals(compareBeta, testBeta);
+        
+        //Test for greater than or equal 350
+        testBeta = instance.calculateTime(360, 2);
+        compareBeta = (360 - 350)/5 + 120;
+        assertEquals(compareBeta, testBeta);
+        
+    }
+    //ensures that gammaTown uses alternate rate
+    @Test
+    public void testgammaTown() throws Exception
+    {
+        PayStationImpl instance = new PayStationImpl();
+        int testGamma = 0;
+        int compareGamma = 0;       
+        
+        Date testLIVE = new Date();
+    
+        SimpleDateFormat dayAbrev = new SimpleDateFormat("E");
+        
+        //if its the weekend, it only tests linear rate
+        if(dayAbrev.format(testLIVE).equals("Sat") || dayAbrev.format(testLIVE).equals("Sun") ){
+            //Test for less than or equal 150
+            testGamma = instance.calculateTime(140, 3);
+            compareGamma = (140 * 2) / 5;
+            assertEquals(compareGamma, testGamma);
+        }
+        
+        //if its a weekday, it tests all the progressive rates
+        else{
+            //Test for less than or equal 150
+            testGamma = instance.calculateTime(140, 3);
+            compareGamma = (140 * 2) / 5;
+            assertEquals(compareGamma, testGamma);
+                
+            //Test for in between 150 and 350
+            testGamma = instance.calculateTime(300, 3);
+            compareGamma = (300 - 150)*(3/10) + 60;
+            assertEquals(compareGamma, testGamma);
+        
+            //Test for greater than or equal 350
+            testGamma = instance.calculateTime(360, 3);
+            compareGamma = (360 - 350)/5 + 120;
+            assertEquals(compareGamma, testGamma);
+        }
+       
+    }
     
 }
