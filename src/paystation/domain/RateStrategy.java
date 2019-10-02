@@ -36,7 +36,7 @@ class betaTown implements RateStrategy{
         if(money < 150){
             this.time = (money * 2) / 5;
         }
-        if(money >= 350){
+        else if(money >= 350){
             this.time = (money - 350)/5 + 120;
         }
         else{
@@ -63,7 +63,7 @@ class gammaTown implements RateStrategy{
             if(money < 150){
                 this.time = (money * 2) / 5;
             }
-            if(money >= 350){
+            else if(money >= 350){
                 this.time = (money - 350)/5 + 120;
             }
             else{
