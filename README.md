@@ -1,5 +1,7 @@
 #Lab 4
 
+Group Members: Liam Miller, Curtis Kieser
+
 ##Requirements
 We were tasked with adding a main to the existing Paystation that we had worked on in a previous lab. We also needed to use branches and pull requests to change up how we work as a team. We were also required to use certain rate strategies via one of four different methods for doing this. We used Method 3 to accomplish the task.
 
