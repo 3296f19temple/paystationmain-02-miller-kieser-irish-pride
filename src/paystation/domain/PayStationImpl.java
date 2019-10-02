@@ -77,7 +77,7 @@ public class PayStationImpl implements PayStation {
         timeBought = calculateTime(insertedSoFar, town);
     }
 
-    private int calculateTime(int inserted, int town) {
+    public int calculateTime(int inserted, int town) {
         int retVal;
 
         if (town == 2) {
