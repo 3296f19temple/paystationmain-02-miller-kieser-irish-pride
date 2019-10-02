@@ -24,6 +24,7 @@ public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
     private int timeBought;
+    private int town;//
     private Map coinMap = new HashMap();
     private boolean nickleBool = false;
     private boolean dimeBool = false;
@@ -72,7 +73,29 @@ public class PayStationImpl implements PayStation {
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
         insertedSoFar += coinValue;
-        timeBought = insertedSoFar / 5 * 2;
+        //timeBought = insertedSoFar / 5 * 2;
+        timeBought = calculateTime(insertedSoFar, town);
+    }
+
+    private int calculateTime(int inserted, int town) {
+        int retVal;
+
+        if (town == 2) {
+            betaTown beta = new betaTown();
+            retVal = beta.calculateTime(inserted);
+        } else if (town == 3) {
+            gammaTown gamma = new gammaTown();
+            retVal = gamma.calculateTime(inserted);
+        } else {
+            alphaTown alpha = new alphaTown();
+            retVal = alpha.calculateTime(inserted);
+        }
+
+        return retVal;
+    }
+
+    public void setTown(int town) {
+        this.town = town;
     }
 
     @Override
